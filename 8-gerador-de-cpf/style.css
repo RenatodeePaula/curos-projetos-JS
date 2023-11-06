@@ -8,6 +8,7 @@
 body {
     display: flex;
     justify-content: center;
+    
 }
 
 .container {
@@ -26,6 +27,12 @@ h1 {
     display: flex;
     gap: 3rem;
     margin-bottom: 2rem;
+    border-bottom: #008cba 1px solid;
+}
+
+p {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 #generateBtn { 
@@ -44,14 +51,14 @@ h1 {
 }
 
 .btn2 {
-    display: none;
-    
+    display: none;    
 }
+
 .copy {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 
