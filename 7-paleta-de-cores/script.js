@@ -4,7 +4,7 @@ const colorsDiv = document.querySelector('.colors')
 
 function createFiveColors() {
   colorsDiv.innerHTML = ""
-  for(let i = 0; i < 5; i++){     
+  for(let i = 0; i < 6; i++){     
     const colorCreated = generateRamdomColor()   
     const colorDiv = document.createElement('div')
     colorDiv.style.backgroundColor = colorCreated
