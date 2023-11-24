@@ -10,7 +10,6 @@ window.addEventListener('scroll', function()  {
         backToTopButton.style.display = "none"
     }
 })
-
 backToTopButton.addEventListener('click', (event) => {
     event.preventDefault()
 
@@ -19,3 +18,4 @@ backToTopButton.addEventListener('click', (event) => {
         behavior: "smooth",
     })
 })
+//Final
