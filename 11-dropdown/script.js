@@ -9,6 +9,7 @@ window.addEventListener('scroll', function()  {
     } else {    
         backToTopButton.style.display = "none"
     }
+    
 })
 backToTopButton.addEventListener('click', (event) => {
     event.preventDefault()
