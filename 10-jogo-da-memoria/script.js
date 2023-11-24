@@ -1,5 +1,5 @@
 // Crie uma matriz com pares de números representando as cartas
-const cards = [1, 1, 2, 2, 3, 3, 4, 4]
+const cards = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6,6]
 
 // Crie um objeto para armazenar as imagens correspondentes para cada carta
 async function generateImagePairs( ) {
@@ -54,7 +54,6 @@ async function createCards() {
         card.addEventListener('click', flipCard) 
     }
 }
-
 createCards()
 
 // Variáveis para armazenar o número d cartas viradas, a primeiro qeu foi clicada, a segunda que foi clicada e número de tentativas.
@@ -88,7 +87,6 @@ function updateAttempts() {
 function checkForMatch() {
     const isMatch = firstCard.getAttribute('data-card') === secondCard.getAttribute('data-card')
     isMatch ? disabledCards() : unflipCards() 
-
 }
 
 // Desabilidar as cartas se forem iguais
