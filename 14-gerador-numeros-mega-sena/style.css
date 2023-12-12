@@ -20,7 +20,6 @@ h1 {
     text-align: center;
 }
 
-
 p {
     margin-bottom: 1.8rem;    
     font-size: 2rem;
@@ -47,7 +46,6 @@ p {
     color: #fff;
     font-size: 1.5em;
     font-style: bold;
-
 }
 
 button {
@@ -57,5 +55,4 @@ button {
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
-
 }

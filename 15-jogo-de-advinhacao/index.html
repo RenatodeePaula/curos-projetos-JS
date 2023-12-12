@@ -9,6 +9,31 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    
+    <h1>Jogo da Advinhação</h1>
+    <div class="container">
+        <div id="difficulty-section">
+            <label for="difficulty">Escolha a dificuldade:</label>
+            <select name="difficulty" id="difficulty">
+                <option value="" readonly>Selecione</option>
+                <option value="1">Fácil</option>
+                <option value="2">Médio</option>
+                <option value="3">Difícil</option>
+            </select>
+        </div>
+        <div id="game-section">
+            <p id="explanation">Eu estou pensando em um número de 1 a 100. Tente adivinhar qual é!</p>
+            
+            <div id="guess-section">
+                <input type="number" id="guess-input" 
+                placeholder="Digite sua resposta aqui"
+                />
+                <button id="guess-btn">Enviar</button>
+            </div>
+
+            <p id="result"></p>
+            <button id="reset-btn">Jogar novamente</button>
+            <p>Tentativas restantes: <span id="tries-left"></span></p>
+        </div>
+    </div>    
 </body>
 </html>
