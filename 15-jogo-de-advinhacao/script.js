@@ -11,7 +11,6 @@ const explanation = document.querySelector('#explanation')
 
 let maxTries
 let randomNumber
-let triesLeft
 
 selectDificulty.addEventListener('change', () => {
    const dificultValue = +selectDificulty.value   
@@ -32,14 +31,14 @@ selectDificulty.addEventListener('change', () => {
    }
 
    dificultSection.style.display = "none"
-   gameSection.style.display = 'flex'
-   triesLeft = maxTries
+   gameSection.style.display = 'flex'  
    triesLeftSpan.textContent = maxTries   
 
    randomNumber = Math.floor(Math.random() * 100 + 1) 
 })
 
 let response = ""
+let remainingAttempts = 0
 
 guessBtn.addEventListener('click', () => {
     let response = +guessInput.value
@@ -50,26 +49,29 @@ guessBtn.addEventListener('click', () => {
 
     } else {         
         maxTries = maxTries - 1
+        remainingAttempts = remainingAttempts + 1      
+        
         triesLeftSpan.textContent = maxTries
 
         guessInput.value = ""       
 
-        result.textContent = `${hitAnalyzer(response, randomNumber, maxTries)}`       
+        result.textContent = `${hitAnalyzer(response, randomNumber, maxTries, remainingAttempts)}`       
     }
 })
 
-function hitAnalyzer(resp, randNum, attemp) {
-    if(attemp > 0 )  {        
-        console.log(`resposta dada = ${resp}, número aleatorio =  ${randNum}, tentativas restantes = ${attemp}`)
-
+function hitAnalyzer(resp, randNum, attemp, tLeft) {
+    if(attemp > 0 ) {
+        console.log(randNum)
         if(resp < randNum) {
             return "Número baixo, tente novamente!"
         } else if(resp > randNum) {             
             return "Número alto, tente novamente!"
         } else if(resp === randNum) { 
             resetBtn.style.display = "block"
+            guessSection.style.display = "none"
+            explanation.style.display = "none"              
             
-            return "Parabéns você acertou!"
+            return `Parabéns você acertou com ${tLeft} tentativas!`
         }
    } else if(attemp <= 0) {
         resetBtn.style.display = "block"
