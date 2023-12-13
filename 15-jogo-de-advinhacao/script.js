@@ -1,20 +1,23 @@
+const selectDificulty = document.querySelector('#difficulty')
 const guessSection = document.querySelector('#guess-section')
 const guessInput = document.querySelector('#guess-input')
-const selectDificulty = document.querySelector('#difficulty')
 const triesLeftSpan = document.querySelector('#tries-left')
 const result = document.querySelector('#result')
 const gameSection = document.querySelector('#game-section')
 const dificultSection = document.querySelector('#difficulty-section')
 const resetBtn = document.querySelector('#reset-btn')
 const guessBtn = document.querySelector('#guess-btn')
-const explanation = document.querySelector('#explanation')
+const recordParagraph = document.querySelector('#record')
+
 
 let maxTries
 let randomNumber
+let response = ""
+let remainingAttempts = 0
+let record = 10
 
 selectDificulty.addEventListener('change', () => {
    const dificultValue = +selectDificulty.value   
-
    switch(dificultValue) {
     case 1:
         maxTries = 10
@@ -32,13 +35,11 @@ selectDificulty.addEventListener('change', () => {
 
    dificultSection.style.display = "none"
    gameSection.style.display = 'flex'  
-   triesLeftSpan.textContent = maxTries   
+   guessSection.style.display = "flex" 
+   triesLeftSpan.textContent = maxTries  
 
    randomNumber = Math.floor(Math.random() * 100 + 1) 
 })
-
-let response = ""
-let remainingAttempts = 0
 
 guessBtn.addEventListener('click', () => {
     let response = +guessInput.value
@@ -49,10 +50,9 @@ guessBtn.addEventListener('click', () => {
 
     } else {         
         maxTries = maxTries - 1
-        remainingAttempts = remainingAttempts + 1      
+        remainingAttempts = remainingAttempts + 1     
         
-        triesLeftSpan.textContent = maxTries
-
+        triesLeftSpan.textContent = maxTries        
         guessInput.value = ""       
 
         result.textContent = `${hitAnalyzer(response, randomNumber, maxTries, remainingAttempts)}`       
@@ -60,28 +60,42 @@ guessBtn.addEventListener('click', () => {
 })
 
 function hitAnalyzer(resp, randNum, attemp, tLeft) {
-    if(attemp > 0 ) {
-        console.log(randNum)
+    if(attemp >= 0 ) {      
         if(resp < randNum) {
             return "Número baixo, tente novamente!"
         } else if(resp > randNum) {             
             return "Número alto, tente novamente!"
         } else if(resp === randNum) { 
             resetBtn.style.display = "block"
-            guessSection.style.display = "none"
-            explanation.style.display = "none"              
+            guessSection.style.display = "none"                   
             
-            return `Parabéns você acertou com ${tLeft} tentativas!`
+            if(tLeft < record) {
+                record = tLeft 
+                recordParagraph.style.display = 'block'
+                recordParagraph.textContent = `Novo record ${record} tentativas!`
+               
+            } else {
+                recordParagraph.style.display = 'block'
+                recordParagraph.textContent = `Record atual ${record} tentativas!`
+            }
+            return `Parabéns você acertou com ${tLeft} tentativas! `
         }
    } else if(attemp <= 0) {
         resetBtn.style.display = "block"
-        guessSection.style.display = "none"
-        explanation.style.display = "none"  
+        guessSection.style.display = "none"      
         
     return  result.textContent = `Suas tentativas acabaram, o número correto é ${randNum}.`
    }
+   console.log(randNum)
 }
 
-resetBtn.addEventListener('click', () => {   
-    location.reload()
+resetBtn.addEventListener('click', () => {     
+    gameSection.style.display = 'none'
+    dificultSection.style.display = "flex"  
+    guessSection.style.display = "none"   
+    result.textContent = ""
+    resetBtn.style.display = "none" 
+    selectDificulty.value = ""   
+    recordParagraph.style.display = "none" 
+    remainingAttempts = 0
 })
