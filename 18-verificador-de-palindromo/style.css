@@ -1,0 +1,43 @@
+* {
+    font-family: Arial;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin: 1.5rem 1rem;
+}
+
+label {
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem ;
+}
+
+.container {
+    max-width: 400px;    
+    margin:0 auto;
+}
+
+input {
+    height: 1.6rem;
+    display: block;
+    width: 100%;
+}
+
+#check {
+    margin: 0.8rem 0;
+    padding: 0.6rem;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    /* transition: 0.4s; */
+    cursor: pointer;
+}
+
+#check:hover {
+    background-color: #3e8e41 ;
+}
